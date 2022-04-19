@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оплата</title>
+</head>
+
+<style>
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    background-color: #edf6f9;
+    float: left;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+input[type=submit] {
+
+    width: 220px;
+    height: 75px;
+    
+    background-color: white;
+    color: #76c893;
+    border-radius: 6px;
+    border: 3px #76c893 solid;
+
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+
+    cursor: pointer;
+
+    margin: 20px;
+}
+
+</style>
+<body>
+
+    <div class="content">
+        <h2>Форма успешно сгенерирована</h2>
+        <h2>Подтвердите покупку</h2>
+
+        <form name="Pay" method="post" action="https://pay.piastrix.com/ru/pay" accept-charset="UTF-8">
+            <input type="hidden" name="amount" value="{{amount}}"/> 
+            <input type="hidden" name="currency" value="{{currency}}"/>
+            <input type="hidden" name="shop_id" value="{{shop_id}}"/>
+            <input type="hidden" name="sign" value="{{sign}}"/>
+            <input type="hidden" name="shop_order_id" value="{{order_id}}"/>
+            <input type="submit" value="Подтвердить платеж"/>
+            <input type="hidden" name="description" value="{{desc}}"/> 
+        </form>    
+    </div>
+</body>
+</html>

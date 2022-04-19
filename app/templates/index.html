@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестовое задание Involve</title>
+</head>
+<style>
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    background-color: #edf6f9;
+    float: left;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+input {
+    width: 90%;
+    padding: 5px;
+    border: 1px white solid;
+    border-radius: 8px;
+}
+
+textarea {
+    width: 90%;
+    padding: 5px;
+
+    border: 1px white solid;
+    border-radius: 8px;    
+}
+
+select {
+    width: 90%;
+    padding: 5px;
+
+    border: 1px white solid;
+    border-radius: 8px;    
+}
+
+input[type=submit] {
+
+    width: 220px;
+    height: 75px;
+
+    background-color: white;
+    color: #76c893;
+    border-radius: 6px;
+    border: 3px #76c893 solid;
+
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+}
+
+.last_payments {
+    float: left;
+    margin: 20px;
+    background-color: #cbf3f0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+th {
+    margin: 10px;
+    border-bottom: 1px black solid;
+}
+tr {
+    border-bottom: 1px black solid;
+    margin: 10px;
+}
+
+</style>
+<body>
+    
+    <div class="content">
+
+        <form action="/payment" method="POST">
+            <h3>Сумма</h3>
+            <input type="number" step="0.50" name="amount" value="1">
+    
+            <h3>Валюта оплаты</h3>
+            <select name="currency">
+                <option value="usd">USD</option>
+                <option value="eur">EUR</option>
+                <option value="rub">RUB</option>
+            </select>
+    
+            <h3>Описание товара</h3>
+            <textarea name="desc" cols="30" rows="10"></textarea>
+            <input type="submit" value="Оплатить">
+    
+        </form>
+    </div>
+    
+    <div class="last_payments">
+        <h1>Транзакции</h1>
+        <table>
+            <tr>
+              <th>Id</th>
+              <th>Amount</th>
+              <th>Currency</th>
+              <th>Description</th>
+            </tr>
+
+        {%for payment in payments: %}
+            <tr>
+              <td>{{payment.id}}</td>
+              <td>{{payment.amount}}</td>
+              <td>{{payment.currency}}</td>
+              <td>{{payment.desciption}}</td>
+            </tr>
+        {%endfor%}
+        </table>
+
+    </div>
+
+</body>
+</html>
